@@ -26,6 +26,7 @@ model Product {
   price      Int
   category   Category? @relation(fields: [categoryId], references: [id])
   categoryId Int?
+  url        String?
 }
 
 model Category {
