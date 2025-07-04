@@ -9,7 +9,7 @@ export const createProduct = async (req, res) => {
     res.json(product);
   } catch (error) {
     res.status(400).json({ error: error.message });
-    console.error("Error al crear tarea", error);
+    console.error("Error al crear producto", error);
   }
 };
 export const getProducts = async (req, res) => {
@@ -36,7 +36,7 @@ export const updateProduct = async (req, res) => {
     });
     res.json(product);
   } catch (error) {
-    res.status(404).json({ error: "Tarea no encontrada" });
+    res.status(404).json({ error: "Producto no encontrado" });
   }
 };
 
@@ -44,8 +44,8 @@ export const deleteProduct = async (req, res) => {
   const { id } = req.params;
   try {
     await prisma.product.delete({where: { id: Number(id) }});
-    res.json({ message: "Tarea Eliminada" });
+    res.json({ message: "Producto Eliminado" });
   } catch (error) {
-    res.status(404).json({ error: "Tarea no encontrada" });
+    res.status(404).json({ error: "Producto no encontrado" });
   }
 };
