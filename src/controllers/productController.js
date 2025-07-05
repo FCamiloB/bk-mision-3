@@ -1,10 +1,10 @@
 import prisma from "../prismaClient.js";
 
 export const createProduct = async (req, res) => {
-  const { name, price, categoryId } = req.body;
+  const { name, price, url, categoryId } = req.body;
   try {
     const product = await prisma.product.create({
-      data: { name, price, categoryId },
+      data: { name, price, url, categoryId },
     });
     res.json(product);
   } catch (error) {
@@ -28,11 +28,11 @@ export const getProducts = async (req, res) => {
 };
 export const updateProduct = async (req, res) => {
   const { id } = req.params;
-  const { name, price, categoryId } = req.body;
+  const { name, price, url, categoryId } = req.body;
   try {
     const product = await prisma.product.update({
       where: { id: Number(id) },
-      data: { name, price, categoryId },
+      data: { name, price, url, categoryId },
     });
     res.json(product);
   } catch (error) {
